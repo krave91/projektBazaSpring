@@ -11,16 +11,16 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "klient")
-public class Klient {
-
+@Table(name = "towar")
+public class Towar {
+	
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@Column(name = "imie", length = 45)
-	private String imie;
+	@Column(name = "nazwa", length = 45)
+	private String nazwa;
 
-	@Column(name = "nazwisko", length = 45)
-	private String nazwisko;
+	@Column(name = "cena", length = 45)
+	private float cena;
 }

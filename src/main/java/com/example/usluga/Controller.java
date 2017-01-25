@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.usluga.domain.Klient;
+import com.example.usluga.domain.Towar;
 import com.example.usluga.service.Service;
 
 @RequestMapping("/controller")
@@ -16,23 +17,43 @@ public class Controller {
 	@Autowired
 	Service service;
 
-	@RequestMapping("/id/{id}")
-	public Klient pobierzId(@PathVariable("id") Long id) {
-		Klient result = service.getId(id);
+	@RequestMapping("/klient/id/{id}")
+	public Klient pobierzIdKlienta(@PathVariable("id") Long id) {
+		Klient result = service.getKlientId(id);
 		return result;
 	}
 	
-	@RequestMapping("/all")
-	public List<Klient> pobierzWszystkich() {
-		List<Klient> result = service.getAll();
+	@RequestMapping("/klient/all")
+	public List<Klient> pobierzWszystkichKlientow() {
+		List<Klient> result = service.getKlientAll();
 		return result;
 	}
 	
-	@RequestMapping("/nazwisko/{nazwisko}")
-	public Klient pobierzNazwisko(@PathVariable("nazwisko") String nazwisko) {
+	@RequestMapping("/klient/nazwisko/{nazwisko}")
+	public Klient pobierzNazwiskoKlienta(@PathVariable("nazwisko") String nazwisko) {
 		Klient result = service.getKlient(nazwisko);
 		return result;
 	}
+	
+	@RequestMapping("/towar/id/{id}")
+	public Towar pobierzIdTowaru(@PathVariable("id") Long id) {
+		Towar result = service.getTowarId(id);
+		return result;
+	}
+	
+	@RequestMapping("/towar/all")
+	public List<Towar> pobierzWszystkieTowary() {
+		List<Towar> result = service.getTowarAll();
+		return result;
+	}
+	
+	@RequestMapping("/towar/nazwa/{nazwa}")
+	public Towar pobierzNazweTowaru(@PathVariable("nazwa") String nazwa) {
+		Towar result = service.getTowar(nazwa);
+		return result;
+	}
+	
+	
 	
 
 }
