@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.usluga.domain.Klient;
 import com.example.usluga.domain.Towar;
+import com.example.usluga.domain.Transakcja;
 import com.example.usluga.service.Service;
 
 @RequestMapping("/controller")
@@ -54,6 +55,23 @@ public class Controller {
 	}
 	
 	
+	@RequestMapping("/transakcja/id/{id}")
+	public List<Transakcja> pobierzTransakcjeKlienta(@PathVariable("id") Long id) {
+		List<Transakcja> result = service.getTransactionList(id);
+		return result;
+	}
+	
+//	@RequestMapping("/transakcja/all")
+//	public List<Transakcja> pobierzWszystkieTransakcje() {
+//		List<Transakcja> result = service.getTransactionAll();
+//		return result;
+//	}
+//	
+//	@RequestMapping("/transakcja/idKlienta/{klientId}")
+//	public Transakcja pobierzTransakcjeKlienta(@PathVariable("klientId") Long klientId) {
+//		Transakcja result = service.getKlientTransaction(klientId);
+//		return result;
+//	}
 	
 
 }

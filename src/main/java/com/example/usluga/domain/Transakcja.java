@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -14,19 +16,19 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "klient")
-public class Klient {
-
+@Table(name = "transakcja")
+public class Transakcja {
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@Column(name = "imie", length = 45)
-	private String imie;
+	@ManyToOne
+	@JoinColumn(name="klientId")
+	private Klient klient2;
 
-	@Column(name = "nazwisko", length = 45)
-	private String nazwisko;
-	
-	@OneToMany(mappedBy="klient2")
-	private List<Transakcja> transakcje;
+//	@Column(name = "towarId")
+//	private Long towarId;
+//	
+	@Column(name = "ilosc")
+	private int ilosc;
 }

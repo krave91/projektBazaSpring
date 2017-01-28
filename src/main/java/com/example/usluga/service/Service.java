@@ -9,6 +9,8 @@ import com.example.usluga.domain.Klient;
 import com.example.usluga.domain.KlientRepository;
 import com.example.usluga.domain.Towar;
 import com.example.usluga.domain.TowarRepository;
+import com.example.usluga.domain.Transakcja;
+import com.example.usluga.domain.TransakcjaRepository;
 
 @Component
 public class Service {
@@ -19,6 +21,8 @@ public class Service {
 	@Autowired
 	TowarRepository towarRepository;
 	
+	@Autowired
+	TransakcjaRepository transakcjaRepository;
 
 	public Klient getKlientId(Long id) {
 		Klient klient = klientRepository.findById(id);
@@ -51,6 +55,20 @@ public class Service {
 		return towar;
 	}
 	
+	public List<Transakcja> getTransactionList(Long klientId) {
+		List<Transakcja> transakcje = transakcjaRepository.getKlientTransaction(klientId);
+		return transakcje;
+	}
+	
+//	public List<Transakcja> getTransactionAll(){
+//		List<Transakcja> list = transakcjaRepository.findAll();
+//		return list;
+//	}
+
+//	public Transakcja getKlientTransaction(Long klientId) {
+//		Transakcja transakcja = transakcjaRepository.getKlientTransaction(klientId);
+//		return transakcja;
+//	}
 	
 	
 	
